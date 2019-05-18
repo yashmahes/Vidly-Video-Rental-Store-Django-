@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="{% url 'movies:add' %} ">Add New Movie</a>
+<br>
+<br>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Stock</th>
+            <th>Daily Rate</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for m in movies %}
+        <tr>
+            <td><a href="{% url 'movies:detail' m.id %} ">{{m.title}}</a></td>
+
+            <td>{{m.genre}} </td>
+            <td>{{m.number_in_stock}} </td>
+            <td>{{m.daily_rate}} </td>
+            <td><a href="{% url 'movies:delete' m.id %} ">delete</a> </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
